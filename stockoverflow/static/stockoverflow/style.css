@@ -1,0 +1,12 @@
+.back{
+	background-image: url("body.jpg");
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+}
+
+.image{
+	height: 250px;
+	width: 400px;
+	float:center;
+}

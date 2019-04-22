@@ -1,0 +1,17 @@
+.back{
+	background-image: url("body.jpg");
+	background-color: #000;
+	background-size: cover;
+}
+
+
+
+.main {
+    
+    padding-left:240px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

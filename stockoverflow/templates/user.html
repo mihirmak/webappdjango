@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+StockOverflow
+{% endblock title %}
+
+
+{% block body %}
+
+<body>
+		
+		
+		<nav class="navbar navbar-default ">
+		    <div class="navbar-header">
+		      <a class="navbar-brand navbar-center" href="#">StockOverflow</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		    	
+		    	
+		      <li><a class="glyphicon glyphicon-home" href={% url 'userstockoverflow' %}>Home</a></li>
+		      <li><a class="glyphicon glyphicon-bitcoin" href={% url 'news' %}>News</a></li>
+		      <li><a class="glyphicon glyphicon-bell" href={% url 'contact' %}>Contact</a></li>
+		       
+		    </ul>
+		  </div>
+		</nav>
+		<div class="w3-sidebar w3-bar-block w3-dark-grey fixed" style="width:20%">
+		  
+		  <form action="/userstocks/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-link w3-button w3-bar-item w3-border-bottom navbar-btn navbar-link ">Your Stocks</button></form>
+		  
+		  <form method="POST" action="/logout/">{% csrf_token %}
+		  	<input type="submit" value="Logout">
+		  </form>
+		  
+		</div>
+		<div style="margin-left:20%">
+			<div class="row">
+				<h1 align="center">Stocks</h1>
+			</div>	
+			<div class="row" style="padding-top:30px;">
+				<div class="col-sm-4" style="padding-left:15px;">
+					<form action={% url 'buy' %} method="POST">{% csrf_token %}
+					<h2 align="center" >Reliance</h2>
+					{% load static %}
+					<img class="image" src="{% static 'stockoverflow/reliance.png' %}">
+					<input type="text" readonly="true" value="Reliance" name="item_name">
+					<input type="text" name="qty" value="1" class="form-control">
+					  	<input type="submit" value="Buy" >
+					  	<h4>Price:<span ><input name="option" value="350" readonly="true"></span></h4>
+					  </form>
+
+				</div>
+				<div class="col-sm-4" style="padding-left:15px;">
+					<form action={% url 'buy' %} method="POST">{% csrf_token %}
+					<h2 align="center" >Tata Motors</h2>
+					{% load static %}
+					<img class="image" src="{% static 'stockoverflow/tata.png' %}">
+					<input type="text" readonly="true" value="Tatamotors" name="item_name">
+					<input type="text" name="qty" value="1" class="form-control">
+					  	<input type="submit" value="Buy" >
+					  	<h4>Price:<span ><input name="option" value="150" readonly="true"></span></h4>
+					  </form>
+				</div>
+				<div class="col-sm-4" style="padding-left:15px;">
+					<form action={% url 'buy' %} method="POST">{% csrf_token %}
+					<h2 align="center" >Sensex</h2>
+					{% load static %}
+					<img class="image" src="{% static 'stockoverflow/sensex.png' %}">
+					<input type="text" readonly="true" value="Sensex" name="item_name">
+					<input type="text" name="qty" value="1" class="form-control">
+					  	<input type="submit" value="Buy" >
+					  	<h4>Price:<span ><input name="option" value="500" readonly="true"></span></h4>
+					  </form>
+				</div>
+
+			</div>
+		</div>
+
+</body>
+{% endblock %}

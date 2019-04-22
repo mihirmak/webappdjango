@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+StockOverflow
+{% endblock title %}
+
+
+{% block body %}
+
+<body>
+		
+		
+		<nav class="navbar navbar-default fixed-top">
+		    <div class="navbar-header">
+		      <a class="navbar-brand navbar-center" href="#">StockOverflow</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		    	
+		    	
+		      <li><a class="glyphicon glyphicon-home" href={% url 'userstockoverflow' %}>Home</a></li>
+		      <li><a class="glyphicon glyphicon-bitcoin" href={% url 'news' %}>News</a></li>
+		      <li><a class="glyphicon glyphicon-bell" href={% url 'contact' %}>Contact</a></li>
+		       
+		    </ul>
+		  </div>
+		</nav>
+		<div class="w3-sidebar w3-bar-block w3-dark-grey fixed" style="width:20%">
+		  
+		  <form action="" method="POST">{% csrf_token %}<button type="submit" class="btn btn-link w3-button w3-bar-item w3-border-bottom navbar-btn navbar-link ">Your Stocks</button></form>
+		  
+		  <form method="POST" action="/logout/">{% csrf_token %}
+		  	<input type="submit" value="Logout">
+		  </form>
+		  
+		</div>
+		<div style="margin-left:20%">
+			<div class="row">
+				<h1 align="center">Stocks Bought</h1>
+			</div>	
+				{% if no == 0 %}
+				{% load static %}
+				<center><img style="width:700px; height: 400px" src="{% static 'stockoverflow/empty.png' %}" /></center>
+				{% else %}
+				{% for n in i %}
+				<div class="row" style="padding-top:30px;">
+				<center>	
+				<div class="col-sm-2"></div>	
+				<div class="col-sm-8" style="background-color: #D3D3D3">{% load extras %}
+					<h3>{{n.name}}</h3>
+					<p>Price:{{n.price}}</p>
+					<p>Quantity:{{n.qty}}</p>
+					<p>Net Price:<b>{{ n.price|mul:n.qty }}</b></p>
+				<div class="col-sm-2"></div>	
+
+				</div>
+				</center>	
+				</div>
+				{% endfor %}
+				{% endif %}
+			
+		</div>
+
+</body>
+{% endblock %}

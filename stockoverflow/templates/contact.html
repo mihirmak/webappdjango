@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+StockOverflow
+{% endblock title %}
+
+
+{% block body %}
+<body>
+
+		<nav class="navbar navbar-default ">
+		    <div class="navbar-header">
+		      <a class="navbar-brand navbar-center" href="#">StockOverflow</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		    	{% if user.is_authenticated %}	
+		      <li><a class="glyphicon glyphicon-home" href={% url 'userstockoverflow' %}>Home</a></li>
+		      	{% else %}
+		      	<li><a class="glyphicon glyphicon-home" href={% url 'login' %}>Home</a></li>
+		      	{% endif %}
+		      <li><a class="glyphicon glyphicon-bitcoin" href={% url 'news' %}>News</a></li>
+		      <li><a class="glyphicon glyphicon-bell" href="">Contact</a></li>
+		      {% if user.is_authenticated %}
+		      <li><form action="/logout/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-link navbar-btn navbar-link glyphicon glyphicon-log-out">Logout</button></form></li></li>
+		      {% endif %}	
+		    </ul>
+		  </div>
+		</nav>
+		<div class="container">
+		  <h2 align="center">Contact Us</h2>
+		  <form action="" method="POST">{% csrf_token %}
+		  	<div class="form-group">
+		      <label for="name">Name:</label>
+		      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="email">
+		    </div>
+		    <div class="form-group">
+		      <label for="email">Email:</label>
+		      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		    </div>
+		    <div class="form-group">
+		      <label for="phno">Phone no:</label>
+		      <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+		    </div>
+		    <div class="form-group">
+		      <label for="msg">Message:</label>
+		      <input type="text" class="form-control" id="msg" placeholder="Enter your message" name="pwd">
+		    </div>
+		    <button type="submit" class="btn btn-danger">Submit</button>
+		  </form>
+		</div>
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+StockOverflow
+{% endblock title %}
+
+
+{% block body %}
+
+<body>
+
+		<nav class="navbar navbar-default ">
+		    <div class="navbar-header">
+		      <a class="navbar-brand navbar-center" href="#">StockOverflow</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		      {% if user.is_authenticated %}	
+		      <li><a class="glyphicon glyphicon-home" href={% url 'userstockoverflow' %}>Home</a></li>
+		      	{% else %}
+		      	<li><a class="glyphicon glyphicon-home" href={% url 'login' %}>Home</a></li>
+		      	{% endif %}
+		      <li><a class="glyphicon glyphicon-bitcoin" href="">News</a></li>
+		      <li><a class="glyphicon glyphicon-bell" href={% url 'contact' %}>Contact</a></li>
+		      {% if user.is_authenticated %}
+		      <li><form action="/logout/" method="POST">{% csrf_token %}<button type="submit" class="btn btn-link navbar-btn navbar-link glyphicon glyphicon-log-out">Logout</button></form></li></li>
+		      {% endif %}
+		      
+		    </ul>
+		  </div>
+		</nav>
+		<div class="container">
+			<h1 align="center"> News</h1>
+			<div class="row" style="padding-top:50px; ">
+				<div class="col-sm-6" style="padding-left:50px; ">
+					<h3>Stock market update: Smallcap index underperforms Sensex; Mahanagar Gas among top loser </h3>
+					{% load static %}
+					<img class="image" src="{% static 'stockoverflow/news1.jpg' %}">
+					<h4><p>The smallcap index was underperforming benchmark Sensex in Thursday's session.</p> 
+					<p>	
+					Around 1:05 pm, the BSE Smallcap index was trading 0.25 per cent down at 16,905, while the BSE Sensex was 0.09 per cent up at 38,318. 
+				    </p><p>
+					Prataap Snacks (up 16.72 per cent), DCW (up 13.00 per cent), Asian Granito India (up 11.96 per cent), Marksans Pharma (up 11.11 per cent) and Capri Global Capital (up 9.20 per cent) were among the top gainers in the smallcap index. 
+					</p>
+					</h4>
+				</div>
+				<div class="col-sm-6" style="padding-left:50px; ">
+					<h3 align="center">Stock market update: Telecom stocks under pressure; Bharti Infratel among top loser </h3>
+					{% load static %}
+					<img class="image" src="{% static 'stockoverflow/news2.jpg' %}">
+					<h4>
+						<p>
+						A majority of telecom stocks were under pressure in afternoon trade on Thursday. 
+					</p><p>
+						The BSE Telecom index was trading 0.11 per cent down at 1,160 around 02:45 pm. 
+					</p><p>
+						Tata Teleservices (Maharashtra) (down 2.70 per cent), OnMobile Global (down 2.32 per cent), Himachal Futuristic Communications (down 2.32 per cent), Tejas Networks (down 2.25 per cent), Vindhya Telelinks (down 2.07 per cent) and GTL (down 2.05 per cent) were the top losers in the index. 
+					</p>
+					</h4>
+
+				</div>
+
+			</div>
+		</div>
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+StockOverflow
+{% endblock title %}
+
+
+{% block body %} 
+<body class="back ">
+	
+		<nav class="navbar navbar-default ">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">StockOverflow</a>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li><a class="glyphicon glyphicon-home" href={% url 'login' %}>Home</a></li>
+		      <li><a class="glyphicon glyphicon-bitcoin" href={% url 'news' %}>News</a></li>
+		      <li><a class="glyphicon glyphicon-bell" href={% url 'contact' %}>Contact</a></li>
+		      
+		    </ul>
+		  </div>
+		</nav>
+		
+		<div class="container">
+		<div class="row" style="padding-top: 100px">
+			<div class="col-sm-8 ">
+			<h1 style="color:white" > StockOverFlow</h1>	
+			
+			</div>
+		
+			<div class="col-sm-2">
+				
+				<h2 style="color:white">New here?</h2>
+			
+			</div>
+			<div class="col-sm-2">
+				
+				<button type="button" class="btn btn-danger btn-lg outline" onclick="location.href='{% url 'register' %}'">Sign Up</button>
+				
+			</div>
+			
+			
+		</div>
+		<div class="row" style="padding-top: 100px">
+			<div class="col-sm-8">
+				<h2  style="color:white">
+					Search Stocks,buy and sell at your own pace 
+				</h2>	
+			
+			</div>
+			<div class="col-sm-4" style="background-color:#E6E6FA">
+				<h1 align="center">{{ title }}</h1>
+				<form  method='POST' action="" enctype ="mutlipart/form-data">{% csrf_token %}
+				{{ form }}
+				<input type="submit" class="btn btn-default btn-lg" value="{{ title }}">	
+			</div>
+
+		</div>	
+	</div>
+</body>	
+
+{% endblock body %}
