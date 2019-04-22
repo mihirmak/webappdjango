@@ -1,2 +1,2 @@
-Django
-mysql
+mysqlclient
+django==2.2
